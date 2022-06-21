@@ -10,24 +10,24 @@ class Remote:
 
     def volumen_down(self):
         if self.__device.is_on():
-            return print(self.__device.set_volumen(-1))
+            return print(f"Volumen: {self.__device.set_volumen(-1)}")
         else:
             return print("Device Shutdown")
 
     def volumen_up(self):
         if self.__device.is_on():
-            return print(self.__device.set_volumen(1))
+            return print(f"Volumen: {self.__device.set_volumen(1)}")
         else:
             return print("Device Shutdown")
 
     def channel_down(self):
         if self.__device.is_on():
-            return print(self.__device.set_channel(-1))
+            return print(f"Canal: {self.__device.set_channel(-1)}")
         else:
             return print("Device Shutdown")
 
     def channel_up(self):
         if self.__device.is_on():
-            return print(self.__device.set_channel(1))
+            return print(f"Canal: {self.__device.set_channel(1)}")
         else:
             return print("Device Shutdown")

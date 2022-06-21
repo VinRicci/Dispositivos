@@ -28,24 +28,25 @@ class Tv (Device):
         return self.__volumen
 
     def set_volumen(self, percent: int):
-        if 0 == self.__volumen and percent == -1:
-            self.__volumen = 0
-        elif 100 == self.__volumen and percent == 1:
-            self.__volumen = 100
-        elif -1 < self.__volumen < 101:
-            self.__volumen += percent
-        elif percent == 123:
-            self.__volumen = 0
+        if percent == 1 or percent == -1:
+            if 0 == self.__volumen and percent == -1:
+                self.__volumen = 0
+            elif 100 == self.__volumen and percent == 1:
+                self.__volumen = 100
+            elif -1 < self.__volumen < 101:
+                self.__volumen += percent
+        else:
+            self.__volumen = percent
         return self.get_volumen()
 
     def get_channel(self):
         return self.__estacion[self.__index]
 
     def set_channel(self, channel: int):
-        if -1 > self.__index < 6:
-            self.__index += channel
-        elif 0 == self.__index and channel == -1:
-            self.__index = 5
-        elif self.__index == 5 and channel == 1:
+        if self.__index >= 5 and channel == 1:
             self.__index = 0
+        if self.__index == 0 and channel == -1:
+            self.__index = 5
+        else:
+            self.__index += channel
         return self.get_channel()
